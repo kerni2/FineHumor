@@ -1,0 +1,9 @@
+<h3>Jokes</h3>
+
+<% @jokes.each do |joke| %>
+  <h6><%= joke.title %></h6>
+  <p><%= joke.body %></p>
+  <time datetime="<%= joke.formatted_created_at %>">
+    <%= joke.formatted_created_at %>
+  </time>
+<% end %>
