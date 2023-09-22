@@ -1,0 +1,13 @@
+<%= form_with model: @joke do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, required: true, placeholder: 'Enter title' %>
+  </div>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body, required: true, placeholder: 'Enter text' %>
+  </div>
+
+  <%= f.submit "Submit joke!" %>
+<% end %>

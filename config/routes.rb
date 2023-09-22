@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/jokes', to: 'jokes#index'
+  resources :jokes
   
   root "pages#index"
 end

@@ -1,0 +1,9 @@
+<h3><%= @joke.title %></h3>
+
+<p>
+  <time datetime="<%= @joke.formatted_created_at %>">
+    <%= @joke.formatted_created_at %>
+  </time>
+  <br>
+  <%= @joke.body %>
+</p>

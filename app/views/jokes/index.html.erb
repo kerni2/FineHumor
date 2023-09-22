@@ -6,4 +6,8 @@
   <time datetime="<%= joke.formatted_created_at %>">
     <%= joke.formatted_created_at %>
   </time>
+  <br>
+  <%= link_to 'Show', joke_path(joke) %> |
+  <%= link_to 'Edit', edit_joke_path(joke) %> |
+  <%= link_to 'Destroy', joke_path(joke), data: {method: :delete, confirm: 'Are you sure?'} %>
 <% end %>
