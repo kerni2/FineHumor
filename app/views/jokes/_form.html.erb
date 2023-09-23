@@ -1,13 +1,24 @@
+<%= render 'shared/errors', object: @joke %>
 <%= form_with model: @joke do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title, required: true, placeholder: 'Enter title' %>
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :title %>
+    </div>
+
+    <div class="col-sm-10">
+      <%= f.text_field :title, placeholder: 'Enter title', class: 'form-control' %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body, required: true, placeholder: 'Enter text' %>
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :body %>
+    </div>
+
+    <div class="col-sm-10">
+      <%= f.text_area :body, placeholder: 'Enter text', class: 'form-control' %>
+    </div>
   </div>
 
-  <%= f.submit "Submit joke!" %>
+  <%= f.submit "Submit joke!", class: 'btn btn-primary' %>
 <% end %>

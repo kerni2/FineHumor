@@ -1,13 +1,17 @@
-<h3>Jokes</h3>
+<h3 class="mb-4 text-center">Jokes</h3>
 
 <% @jokes.each do |joke| %>
-  <h6><%= joke.title %></h6>
-  <p><%= joke.body %></p>
-  <time datetime="<%= joke.formatted_created_at %>">
-    <%= joke.formatted_created_at %>
-  </time>
-  <br>
-  <%= link_to 'Show', joke_path(joke) %> |
-  <%= link_to 'Edit', edit_joke_path(joke) %> |
-  <%= link_to 'Destroy', joke_path(joke), data: {method: :delete, confirm: 'Are you sure?'} %>
+  <article class="card mt-3">
+    <div class="card-header text-center ">
+      <h6><%= link_to joke.title, joke_path(joke), class: 'btn' %></h6>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= joke.body %></p>
+    </div>
+    <div class="card-footer text-body-secondary">
+      <time datetime="<%= joke.formatted_created_at %>">
+        <small><%= joke.formatted_created_at %></small>
+      </time>
+    </div>
+  </article>
 <% end %>

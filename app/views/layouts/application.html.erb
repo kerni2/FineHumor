@@ -12,14 +12,22 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Jokes', jokes_path %></li>
-        <li><%= link_to 'New joke', new_joke_path %></li>
-      </ul>
-    </nav>
-    <main>
+    <header class="p-3" style="background-color: #F8F6F2;">
+      <div class="container">
+        <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><%= link_to 'Home', root_path, class: 'btn px-2 text-gray-700' %></li>
+            <li><%= link_to 'Jokes', jokes_path, class: 'btn px-2 text-gray-700' %></li>
+            <li><%= link_to 'New joke', new_joke_path, class: 'btn px-2 text-gray-700' %></li>            
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container mt-3">
+      <% flash.each do |k, v| %>
+        <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
+      <% end %>
       <%= yield %>
     </main>
   </body>

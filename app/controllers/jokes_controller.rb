@@ -13,6 +13,7 @@ class JokesController < ApplicationController
     @joke = Joke.new joke_params
     if @joke.save
       redirect_to jokes_path
+      flash[:success] = "Joke created!"
     else
       render :new
     end
@@ -23,6 +24,7 @@ class JokesController < ApplicationController
   
   def update
     if @joke.update joke_params
+      flash[:success] = "Joke updated!"
       redirect_to jokes_path
     else
       render :edit
@@ -34,6 +36,7 @@ class JokesController < ApplicationController
   
   def destroy
     @joke.destroy
+    flash[:success] = "Joke deleted!"
     redirect_to jokes_path
   end
 
