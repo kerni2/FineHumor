@@ -1,5 +1,5 @@
 class JokesController < ApplicationController
-  before_action :joke_find, only: %i[edit update show destroy]
+  before_action :joke_find!, only: %i[edit update show destroy]
 
   def index
     @jokes = Joke.all
@@ -42,8 +42,8 @@ class JokesController < ApplicationController
 
   private
 
-  def joke_find
-    @joke = Joke.find_by id: params[:id]
+  def joke_find!
+    @joke = Joke.find params[:id]
   end
 
   def joke_params
