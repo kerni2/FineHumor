@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>FineHumor</title>
+    <title><%= full_title(yield(:page_title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,17 +12,8 @@
   </head>
 
   <body>
-    <header class="p-3" style="background-color: #F8F6F2;">
-      <div class="container">
-        <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><%= link_to 'Home', root_path, class: 'btn px-2 text-gray-700' %></li>
-            <li><%= link_to 'Jokes', jokes_path, class: 'btn px-2 text-gray-700' %></li>
-            <li><%= link_to 'New joke', new_joke_path, class: 'btn px-2 text-gray-700' %></li>            
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <%= yield :main_menu %>
+
 
     <main class="container mt-3">
       <% flash.each do |k, v| %>
