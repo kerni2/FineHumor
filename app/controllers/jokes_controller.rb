@@ -2,7 +2,7 @@ class JokesController < ApplicationController
   before_action :joke_find!, only: %i[edit update show destroy]
 
   def index
-    @jokes = Joke.all
+    @jokes = Joke.order(created_at: :desc).page params[:page]
   end
   
   def new

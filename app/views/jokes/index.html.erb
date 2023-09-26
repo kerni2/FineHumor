@@ -3,6 +3,8 @@
 
 <h3 class="mb-4 text-center">Jokes</h3>
 
+<%= paginate @jokes %>
+
 <% @jokes.each do |joke| %>
   <article class="card mt-3">
     <div class="card-header text-center ">
@@ -18,3 +20,5 @@
     </div>
   </article>
 <% end %>
+
+<%= paginate @jokes %>
