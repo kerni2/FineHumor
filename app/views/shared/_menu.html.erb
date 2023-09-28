@@ -3,9 +3,17 @@
     <div class="container">
       <nav class="d-flex flex-wrap align-items-center justify-content-lg-start">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><%= nav_tab 'Home', root_path, class: 'btn px-2 text-gray-700', current_page: current_page %></li>
-          <li><%= nav_tab 'Jokes', jokes_path, class: 'btn px-2 text-gray-700', current_page: current_page %></li>
-          <li><%= nav_tab 'New joke', new_joke_path, class: 'btn px-2 text-gray-700', current_page: current_page %></li>      
+          <li>
+            <%= nav_tab 'Home', root_path, class: 'btn px-2 text-gray-700', current_page: current_page %>
+          </li>
+          <li>
+            <%= nav_tab 'Jokes', jokes_path, class: 'btn px-2 text-gray-700', current_page: current_page %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+              <%= nav_tab 'New joke', new_joke_path, class: 'btn px-2 text-gray-700', current_page: current_page %>
+            </li>
+          <% end %>    
         </ul>
         <span class="navbar-text">
           <% if user_signed_in? %>
