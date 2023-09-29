@@ -2,14 +2,11 @@ require 'rails_helper'
 
 feature 'User can create joke' do
 
-  given(:user) { User.create!(email: 'user@mail.ru', password: '111111') }
+  given(:user) { create(:user) }
 
   describe 'Authenticated user' do
     background do
-      visit new_user_session_path
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_on 'Log in'
+      sign_in(user)
       visit jokes_path
       click_on 'New joke'
     end
@@ -30,7 +27,6 @@ feature 'User can create joke' do
 
       expect(page).to have_content "Title can't be blank"
     end
-
   end
 
   scenario 'Unregistered user tries to add a joke' do
@@ -38,5 +34,4 @@ feature 'User can create joke' do
 
     expect(page).to_not have_content 'New joke'
   end
-
 end

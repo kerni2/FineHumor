@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Jokes", type: :request do
+  include Warden::Test::Helpers
+
+  let(:user) { create(:user) }
+
   let(:valid_attributes) {
     { title: "MyString", body: "MyText" }
   }
@@ -26,6 +30,8 @@ RSpec.describe "Jokes", type: :request do
   end
 
   describe "GET /new" do
+    before { sign_in user }
+
     it "renders a successful response" do
       get new_joke_url
       expect(response).to be_successful
@@ -33,6 +39,8 @@ RSpec.describe "Jokes", type: :request do
   end
 
   describe "GET /edit" do
+    before { sign_in user }
+
     it "render a successful response" do
       joke = Joke.create! valid_attributes
       get edit_joke_url(joke)
@@ -41,6 +49,8 @@ RSpec.describe "Jokes", type: :request do
   end
 
   describe "POST /create" do
+    before { sign_in user }
+
     context "with valid parameters" do
       it "creates a new joke" do
         expect {
@@ -69,6 +79,8 @@ RSpec.describe "Jokes", type: :request do
   end
 
   describe "PATCH /update" do
+    before { sign_in user }
+
     context "with valid parameters" do
       let(:new_attributes) {
         { title: "MyNewString", body: "MyNewText" }
@@ -98,6 +110,8 @@ RSpec.describe "Jokes", type: :request do
   end
 
   describe "DELETE /destroy" do
+    before { sign_in user }
+
     it "destroys the requested joke" do
       joke = Joke.create! valid_attributes
       expect {

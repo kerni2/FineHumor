@@ -6,7 +6,7 @@ feature 'User can log out', %q{
   I'd like to be able to log out
 } do
 
-  given(:user) { User.create!(email: 'user@mail.ru', password: '111111') }
+  given(:user) { create(:user) }
 
   scenario 'Registered user tries to log out' do
     visit new_user_session_path
