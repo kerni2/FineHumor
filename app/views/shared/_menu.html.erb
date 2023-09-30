@@ -15,13 +15,39 @@
             </li>
           <% end %>    
         </ul>
-        <span class="navbar-text">
+
+        <ul class="nav col-12 col-lg-auto mb-md-0 mb-2">
           <% if user_signed_in? %>
-            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'btn px-2 text-gray-700' %>
+            <li class="dropdown">
+              <%= nav_tab current_user.email, '#',
+                class: 'btn px-2 dropdown-toggle',
+                data: {"bs-toggle": 'dropdown'}, current_page: current_page %>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to 'Edit profile', edit_user_registration_path,
+                    class: 'dropdown-item btn px-2 text-gray-700' %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <%= link_to 'Log out', destroy_user_session_path,
+                    class: 'dropdown-item btn px-2 text-gray-700', data: {method: :delete} %>
+                </li>
+              </ul>
+            </li>
           <% else %>
-            <%= link_to 'Log in', new_user_session_path, class: 'btn px-2 text-gray-700' %>
+            <li>
+              <%= nav_tab 'Sign up', new_user_registration_path,
+                class: 'btn px-2 text-gray-700', current_page: current_page %>
+            </li>
+            <li>
+              <%= nav_tab 'Log in', new_user_session_path,
+                class: 'btn px-2 text-gray-700', current_page: current_page %>
+            </li>
           <% end %>
-        </span>
+        </ul>
       </nav>
     </div>
   </header>
