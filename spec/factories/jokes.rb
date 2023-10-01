@@ -12,5 +12,6 @@ FactoryBot.define do
   factory :joke do
     title
     body
+    author factory: %i[user]
   end
 end

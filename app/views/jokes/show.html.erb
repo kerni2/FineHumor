@@ -4,12 +4,14 @@
 <article class="card">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
+      <% if user_signed_in? && @joke.user_id == current_user.id %>
       <li class="nav-item">
         <%= link_to 'Edit', edit_joke_path(@joke), class: 'btn' %>
       </li>
       <li class="nav-item">
         <%= link_to 'Destroy', joke_path(@joke), class: 'btn', data: {method: :delete, confirm: 'Are you sure?'} %>
       </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to 'Back', jokes_path, class: 'btn' %>
       </li>

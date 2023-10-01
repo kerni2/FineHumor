@@ -8,7 +8,7 @@ RSpec.describe 'Jokes' do
   let(:user) { create(:user) }
 
   let(:valid_attributes) do
-    { title: 'MyString', body: 'MyText' }
+    { title: 'MyString', body: 'MyText', user_id: user.id }
   end
 
   let(:invalid_attributes) do

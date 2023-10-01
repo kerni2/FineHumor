@@ -17,7 +17,7 @@ class JokesController < ApplicationController
   def edit; end
 
   def create
-    @joke = Joke.new joke_params
+    @joke = current_user.jokes.new(joke_params)
     if @joke.save
       redirect_to jokes_path
       flash[:success] = 'Joke created!'
@@ -27,7 +27,7 @@ class JokesController < ApplicationController
   end
 
   def update
-    if @joke.update joke_params
+    if @joke.update(joke_params) && @joke.user_id == current_user.id
       flash[:success] = 'Joke updated!'
       redirect_to jokes_path
     else
@@ -36,9 +36,14 @@ class JokesController < ApplicationController
   end
 
   def destroy
-    @joke.destroy
-    flash[:success] = 'Joke deleted!'
-    redirect_to jokes_path
+    if @joke.user_id == current_user.id
+      @joke.destroy
+      flash[:success] = 'Joke deleted!'
+      redirect_to jokes_path
+    else
+      flash[:notice] = "You can't delete someone else's joke."
+      render :show
+    end
   end
 
   private
