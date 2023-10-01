@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Joke < ApplicationRecord
   validates :title, :body, presence: true
 

@@ -1,16 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-feature 'User can sign in', %q{
-  In order to add joke
-  As an unauthenticates user
-  I'd like to be able to sign in
-} do
+describe 'User can sign in' do
+  let(:user) { create(:user) }
 
-  given(:user) { create(:user) }
-  
-  background { visit new_user_session_path }
+  before { visit new_user_session_path }
 
-  scenario 'Registered user tries to sign in' do
+  it 'Registered user tries to sign in' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_on 'Log in'
@@ -18,7 +15,7 @@ feature 'User can sign in', %q{
     expect(page).to have_content 'Signed in successfully.'
   end
 
-  scenario 'Unregistered user tries to sign in' do
+  it 'Unregistered user tries to sign in' do
     fill_in 'Email', with: 'wrong@mail.ru'
     fill_in 'Password', with: '111111'
     click_on 'Log in'

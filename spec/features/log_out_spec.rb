@@ -1,18 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-feature 'User can log out', %q{
-  In order to end session
-  As an authinticated user
-  I'd like to be able to log out
-} do
+describe 'User can log out' do
+  let(:user) { create(:user) }
 
-  given(:user) { create(:user) }
+  it 'Registered user tries to log out' do
+    sign_in(user)
 
-  scenario 'Registered user tries to log out' do
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
     click_on 'Log out'
 
     expect(page).to have_content 'Signed out successfully'

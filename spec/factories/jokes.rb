@@ -1,6 +1,16 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
+  sequence :title do |n|
+    "MyString#{n}"
+  end
+
+  sequence :body do |n|
+    "MyText#{n}"
+  end
+
   factory :joke do
-    title {  "MyString" }
-    body { "MyText" }
+    title
+    body
   end
 end
