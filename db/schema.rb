@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_01_195229) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_06_171457) do
+  create_table "joke_tags", force: :cascade do |t|
+    t.integer "joke_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["joke_id", "tag_id"], name: "index_joke_tags_on_joke_id_and_tag_id", unique: true
+    t.index ["joke_id"], name: "index_joke_tags_on_joke_id"
+    t.index ["tag_id"], name: "index_joke_tags_on_tag_id"
+  end
+
   create_table "jokes", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
@@ -18,6 +28,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_195229) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_jokes_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,5 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_01_195229) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "joke_tags", "jokes"
+  add_foreign_key "joke_tags", "tags"
   add_foreign_key "jokes", "users"
 end
