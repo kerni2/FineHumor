@@ -74,6 +74,7 @@ GEM
     base64 (0.1.1)
     bcrypt (3.1.19)
     bindex (0.8.1)
+    blueprinter (0.30.0)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -320,6 +321,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import (~> 1.2)
+  blueprinter
   bootsnap
   bullet
   capybara

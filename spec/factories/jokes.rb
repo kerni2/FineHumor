@@ -12,6 +12,14 @@ FactoryBot.define do
   factory :joke do
     title
     body
-    author factory: %i[user]
+    association :user
+  end
+
+  factory :tag do
+    title { 'MyTag' }
+
+    factory :joke_with_tags do
+      jokes { [association(:joke)] }
+    end
   end
 end

@@ -3,15 +3,17 @@
 class JokesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :joke_find!, only: %i[edit update show destroy]
+  before_action :fetch_tags, only: %i[new edit]
 
   def index
-    @jokes = Joke.order(created_at: :desc).page params[:page]
+    @jokes = Joke.all_by_tags(params[:tag_ids])
+    @jokes = @jokes.page params[:page]
   end
 
   def show; end
 
   def new
-    @joke = Joke.new
+    @joke = current_user.jokes.new
   end
 
   def edit; end
@@ -53,6 +55,10 @@ class JokesController < ApplicationController
   end
 
   def joke_params
-    params.require(:joke).permit(:title, :body)
+    params.require(:joke).permit(:title, :body, tag_ids: [])
+  end
+
+  def fetch_tags
+    @tags = Tag.all
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_171457) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_07_073500) do
   create_table "joke_tags", force: :cascade do |t|
     t.integer "joke_id", null: false
     t.integer "tag_id", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_171457) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_tags_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|

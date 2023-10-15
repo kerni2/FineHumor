@@ -24,7 +24,7 @@ gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'jbuilder'
+# gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -51,12 +51,12 @@ gem 'devise'
 gem 'kaminari'
 
 gem 'activerecord-import', '~> 1.2'
+gem 'blueprinter'
+gem 'bullet'
 gem 'caxlsx', '~> 3.1'
 gem 'caxlsx_rails', '~> 0.6'
 gem 'rubyXL', '~> 3.4'
 gem 'rubyzip', '~> 2'
-
-gem 'bullet'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

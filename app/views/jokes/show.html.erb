@@ -25,5 +25,8 @@
     <time datetime="<%= @joke.formatted_created_at %>">
       <small><%= @joke.formatted_created_at %></small>
     </time>
+    <div class="my-2">
+      <%= render @joke.tags %>
+    </div>
   </div>
 </article>
